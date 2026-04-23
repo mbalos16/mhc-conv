@@ -24,8 +24,7 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description = "A script that helps run mHC architecture for convolutional models.\
         An example on how to run the model would be:\
-        `python main.py --dataset cifar100`
-        " 
+        `python main.py --dataset cifar100`" 
         )
 
     parser.add_argument(

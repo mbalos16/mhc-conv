@@ -1,5 +1,6 @@
-from ..mhc import mHCBlock
 import torch
+
+from ..mhc import mHCBlock
 
 
 def test_run_sinkhorn_knopp():
