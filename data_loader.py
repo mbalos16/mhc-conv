@@ -5,6 +5,7 @@ from torchvision.datasets import ImageFolder
 from torch.utils.data import DataLoader
 from functools import partial
 import os
+import torch
 
 # Transform the labels into one_hot_encoding.
 def one_hot_encoding_labels(label, num_classes):
