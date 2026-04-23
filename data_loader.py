@@ -15,12 +15,10 @@ def one_hot_encoding_labels(label, num_classes):
     return one_hot_encoding_labels
 
 
-def load_cifar(batch_size_train = 8, batch_size_validation = 8):
+def load_cifar(batch_size_train = 8, batch_size_validation = 8, num_classes = 100):
     """
     A function that helps load the cifar100 dataset and transform it to create the dataloader for model training.
     """
-    
-    num_classes = 100
 
     # ========== Train ========== 
     transform_train = transforms.Compose(
@@ -65,12 +63,11 @@ def load_cifar(batch_size_train = 8, batch_size_validation = 8):
         "val": DataLoader(validation_dataset, batch_size = batch_size_validation, shuffle = False)
                   }
 
-    return dataloaders
+    return dataloaders, num_classes
 
 
 
-def load_imagenet(batch_size_train = 8, batch_size_validation = 8):
-    num_classes = 1000
+def load_imagenet(batch_size_train = 8, batch_size_validation = 8, num_classes =1000):
     global_data_path = "/mnt/FLASH/imagenet"
     train_path_img = os.path.join(global_data_path, "train")
     validation_path_img = os.path.join(global_data_path, "validation")
@@ -114,5 +111,5 @@ def load_imagenet(batch_size_train = 8, batch_size_validation = 8):
         "train": DataLoader(train_dataset, batch_size=8, shuffle=True),
         "val": DataLoader(validation_dataset, batch_size=8, shuffle=False),
     }
-    return dataloaders
+    return dataloaders, num_classes
 
