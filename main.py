@@ -63,6 +63,15 @@ def parse_args():
         help = "The warmup period needed to warm up the learning rate. \
         Makes hyperparameter tuning more robust while improving the final performance."
     )
+
+    parser.add_argument(
+        "-nb",
+        "--num_blocks",
+        type = int,
+        required = False,
+        default = 10,
+        help = "Controls the number of mHC blocks the model uses."
+    )
     args = parser.parse_args()
     return args
 
@@ -81,7 +90,7 @@ def main():
         dataloaders, num_classes = load_imagenet()
         print(f"Imagenet dataloaders have loaded. The number of classes is {num_classes}.")
 
-    model = mHCResNet(num_outputs = num_classes)
+    model = mHCResNet(num_outputs = num_classes, num_blocks=args.num_blocks)
     summary(model)
     optimizer = torch.optim.Adam(model.parameters(), lr=args.learning_rate)
 
